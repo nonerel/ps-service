@@ -1,4 +1,3 @@
-
 import { NavLink } from "react-router-dom";
 import { 
   LayoutDashboard, 
@@ -54,14 +53,12 @@ export function AppSidebar() {
   return (
     <Sidebar className="border-r bg-white">
       <SidebarHeader className="p-6">
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-            <Package className="h-5 w-5 text-white" />
-          </div>
-          <div>
-            <h2 className="font-bold text-xl text-gray-900">RentPro</h2>
-            <p className="text-xs text-gray-500">Equipment Rental</p>
-          </div>
+        <div className="flex items-center space-x-3">
+          <img 
+            src="/lovable-uploads/88e9a791-bf35-443c-bce5-7fcd400eefc9.png" 
+            alt="PS Service Logo" 
+            className="h-12 w-auto object-contain"
+          />
         </div>
       </SidebarHeader>
       
