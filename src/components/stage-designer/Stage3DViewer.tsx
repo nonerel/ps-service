@@ -92,7 +92,6 @@ function EquipmentMesh({
         color="#333333"
         anchorX="center"
         anchorY="middle"
-        billboard
       >
         {equipment.name}
       </Text>
