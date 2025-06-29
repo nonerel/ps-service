@@ -10,7 +10,8 @@ import {
   Volume2,
   Video,
   Lightbulb,
-  Building2
+  Building2,
+  Layers3
 } from "lucide-react";
 import {
   Sidebar,
@@ -29,6 +30,7 @@ const mainItems = [
   { title: "Inventory", url: "/inventory", icon: Package },
   { title: "Eventi", url: "/events", icon: Calendar },
   { title: "Magazzini", url: "/warehouses", icon: Warehouse },
+  { title: "Stage Designer", url: "/stage-designer", icon: Layers3 },
 ];
 
 const categoryItems = [
