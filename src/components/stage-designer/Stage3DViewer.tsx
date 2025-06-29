@@ -40,7 +40,7 @@ function StageBox({ config }: { config: StageConfig }) {
         infiniteGrid={false}
       />
       
-      {/* Etichette dimensioni */}
+      {/* Etichetta dimensioni */}
       <Text
         position={[0, config.depth + 0.5, -config.height / 2 - 1]}
         fontSize={0.5}
@@ -127,7 +127,6 @@ export function Stage3DViewer({
     
     // Verifica se il click è sul palco
     if (point.y >= stageY - 0.1 && point.y <= stageY + 0.1) {
-      // Qui potresti implementare il posizionamento diretto delle attrezzature
       console.log('Click sul palco:', point);
     }
   };
@@ -147,8 +146,7 @@ export function Stage3DViewer({
           position={[10, 10, 5]} 
           intensity={1}
           castShadow
-          shadow-mapSize-width={2048}
-          shadow-mapSize-height={2048}
+          shadow-mapSize={[2048, 2048]}
         />
         <pointLight position={[-10, 10, -10]} intensity={0.5} />
         

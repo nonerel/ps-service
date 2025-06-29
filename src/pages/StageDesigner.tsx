@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Stage3DViewer } from "@/components/stage-designer/Stage3DViewer";
 import { EquipmentPanel } from "@/components/stage-designer/EquipmentPanel";
 import { ProjectPanel } from "@/components/stage-designer/ProjectPanel";
-import { Save, Download, Upload, Ruler } from "lucide-react";
+import { Save, Download, Ruler } from "lucide-react";
 import { toast } from "sonner";
 
 export interface StageConfig {
@@ -74,7 +74,7 @@ const StageDesigner = () => {
   };
 
   const handleEquipmentRemove = (id: string) => {
-    setPlacedEquipment(prev => prev.filter(eq => eq.id !== id));
+    setPlacedEquipment(prev => prev.filter((eq, index) => `${eq.id}-${index}` !== id));
     toast.success("Attrezzatura rimossa dal progetto");
   };
 
