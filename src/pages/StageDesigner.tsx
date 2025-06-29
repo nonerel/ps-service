@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Stage3DViewer } from "@/components/stage-designer/Stage3DViewer";
+import { Stage2DViewer } from "@/components/stage-designer/Stage2DViewer";
 import { EquipmentPanel } from "@/components/stage-designer/EquipmentPanel";
 import { ProjectPanel } from "@/components/stage-designer/ProjectPanel";
 import { Save, Download, Ruler } from "lucide-react";
@@ -75,6 +75,7 @@ const StageDesigner = () => {
 
   const handleEquipmentRemove = (id: string) => {
     setPlacedEquipment(prev => prev.filter((eq, index) => `${eq.id}-${index}` !== id));
+    setSelectedEquipment(null);
     toast.success("Attrezzatura rimossa dal progetto");
   };
 
@@ -158,19 +159,6 @@ const StageDesigner = () => {
               </div>
             </div>
             
-            <div className="space-y-2">
-              <Label htmlFor="depth">Altezza (m)</Label>
-              <Input
-                id="depth"
-                type="number"
-                value={stageConfig.depth}
-                onChange={(e) => handleStageConfigChange('depth', parseFloat(e.target.value) || 0)}
-                step="0.1"
-                min="0.1"
-                max="5"
-              />
-            </div>
-            
             <div className="flex gap-2">
               <Button onClick={handleSaveProject} className="flex-1">
                 <Save className="h-4 w-4 mr-2" />
@@ -205,22 +193,22 @@ const StageDesigner = () => {
         </Tabs>
       </div>
 
-      {/* Visualizzatore 3D */}
+      {/* Visualizzatore 2D */}
       <div className="flex-1">
         <Card className="h-full">
           <CardHeader>
-            <CardTitle>Visualizzazione 3D - {projectName}</CardTitle>
+            <CardTitle>Visualizzazione 2D - {projectName}</CardTitle>
             <div className="flex gap-2">
               <Badge variant="outline">
-                Palco: {stageConfig.width}m × {stageConfig.height}m × {stageConfig.depth}m
+                Palco: {stageConfig.width}m × {stageConfig.height}m
               </Badge>
               <Badge variant="outline">
                 Attrezzature: {placedEquipment.length}
               </Badge>
             </div>
           </CardHeader>
-          <CardContent className="h-[calc(100%-120px)] p-0">
-            <Stage3DViewer
+          <CardContent className="h-[calc(100%-120px)] p-4">
+            <Stage2DViewer
               stageConfig={stageConfig}
               placedEquipment={placedEquipment}
               selectedEquipment={selectedEquipment}
