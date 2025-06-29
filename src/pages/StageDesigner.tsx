@@ -73,6 +73,16 @@ const StageDesigner = () => {
     toast.success(`${equipment.name} aggiunto al progetto`);
   };
 
+  const handleEquipmentMove = (id: string, position: [number, number, number]) => {
+    setPlacedEquipment(prev => 
+      prev.map((eq, index) => 
+        `${eq.id}-${index}` === id 
+          ? { ...eq, position }
+          : eq
+      )
+    );
+  };
+
   const handleEquipmentRemove = (id: string) => {
     setPlacedEquipment(prev => prev.filter((eq, index) => `${eq.id}-${index}` !== id));
     setSelectedEquipment(null);
@@ -140,8 +150,8 @@ const StageDesigner = () => {
                   type="number"
                   value={stageConfig.width}
                   onChange={(e) => handleStageConfigChange('width', parseFloat(e.target.value) || 0)}
-                  step="0.1"
-                  min="1"
+                  step="0.5"
+                  min="2"
                   max="50"
                 />
               </div>
@@ -152,8 +162,8 @@ const StageDesigner = () => {
                   type="number"
                   value={stageConfig.height}
                   onChange={(e) => handleStageConfigChange('height', parseFloat(e.target.value) || 0)}
-                  step="0.1"
-                  min="1"
+                  step="0.5"
+                  min="2"
                   max="50"
                 />
               </div>
@@ -214,6 +224,7 @@ const StageDesigner = () => {
               selectedEquipment={selectedEquipment}
               onEquipmentSelect={setSelectedEquipment}
               onEquipmentPlace={handleEquipmentPlace}
+              onEquipmentMove={handleEquipmentMove}
             />
           </CardContent>
         </Card>

@@ -150,6 +150,11 @@ export function EquipmentPanel({ onEquipmentSelect }: EquipmentPanelProps) {
     onEquipmentSelect(equipment, defaultPosition);
   };
 
+  const handleDragStart = (event: React.DragEvent, equipment: Equipment) => {
+    event.dataTransfer.setData('application/json', JSON.stringify(equipment));
+    event.dataTransfer.effectAllowed = 'copy';
+  };
+
   return (
     <Card className="h-full">
       <CardHeader>
@@ -199,6 +204,8 @@ export function EquipmentPanel({ onEquipmentSelect }: EquipmentPanelProps) {
                     key={equipment.id}
                     className="cursor-pointer hover:shadow-md transition-shadow"
                     onClick={() => handleEquipmentClick(equipment)}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, equipment)}
                   >
                     <CardContent className="p-3">
                       <div className="flex items-start justify-between">
@@ -206,6 +213,7 @@ export function EquipmentPanel({ onEquipmentSelect }: EquipmentPanelProps) {
                           <div className="flex items-center gap-2">
                             {category?.icon && <category.icon className="h-4 w-4" />}
                             <h4 className="font-medium text-sm">{equipment.name}</h4>
+                            <span className="text-xs text-gray-400">📦 Drag</span>
                           </div>
                           <p className="text-xs text-gray-600 mt-1">{equipment.model}</p>
                           <p className="text-xs text-gray-500 mt-1">
