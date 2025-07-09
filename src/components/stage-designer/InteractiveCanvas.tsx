@@ -12,6 +12,7 @@ import {
   Edge,
   Node,
   NodeTypes,
+  BackgroundVariant,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { StageConfig, Equipment, PlacedEquipment } from '@/pages/StageDesigner';
@@ -161,7 +162,7 @@ export function InteractiveCanvas({
       >
         <Controls />
         <MiniMap />
-        <Background variant="dots" gap={20} size={1} />
+        <Background variant={BackgroundVariant.Dots} gap={20} size={1} />
       </ReactFlow>
     </div>
   );
